@@ -1,12 +1,13 @@
 {
   "name": "qr-api-worker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.ts",
   "repository": "ssh://git@github.com/kobakazu0429/qr-api-worker.git",
   "author": "kobakazu0429 <kobakazu10@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "npx wrangler dev ./src/index.ts"
+    "dev": "npx wrangler dev ./src/index.ts",
+    "publish": "npx wrangler publish ./src/index.ts"
   },
   "dependencies": {
     "hono": "^2.3.1",
