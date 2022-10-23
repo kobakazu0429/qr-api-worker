@@ -1,0 +1,19 @@
+{
+  "name": "qr-api-worker",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "ssh://git@github.com/kobakazu0429/qr-api-worker.git",
+  "author": "kobakazu0429 <kobakazu10@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx wrangler dev ./src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^2.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.18.0",
+    "typescript": "^4.8.4",
+    "wrangler": "^2.1.13"
+  }
+}
