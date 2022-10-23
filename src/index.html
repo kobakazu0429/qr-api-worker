@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator API</title>
+    <style>
+      form,
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: max-content;
+      }
+
+      a[href="#"] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>QR Code Generator API</h1>
+
+    <h2>v1</h2>
+
+    <section>
+      <form>
+        <fieldset>
+          <legend>Input Filename</legend>
+          <input type="text" name="filename" id="filename" />
+          <label for="filename">suggest: have ext .png or .svg</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Input Text (required)</legend>
+          <input type="text" name="text" id="text" required />
+        </fieldset>
+
+        <fieldset>
+          <legend>Select Type</legend>
+
+          <div>
+            <input type="radio" name="type" id="png" value="png" />
+            <label for="png">png (default)</label>
+          </div>
+
+          <div>
+            <input type="radio" name="type" id="svg" value="svg" />
+            <label for="svg">svg</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Select EC(error correction) Level</legend>
+
+          <div>
+            <input type="radio" name="ec_level" id="L" value="L" />
+            <label for="L">L (7%)</label>
+          </div>
+
+          <div>
+            <input type="radio" name="ec_level" id="M" value="M" />
+            <label for="M">M (15%) (default)</label>
+          </div>
+
+          <div>
+            <input type="radio" name="ec_level" id="Q" value="Q" />
+            <label for="Q">Q (25%)</label>
+          </div>
+
+          <div>
+            <input type="radio" name="ec_level" id="H" value="H" />
+            <label for="H">H (30%)</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Input Margin</legend>
+          <input type="number" name="margin" id="margin" min="0" />
+          <label for="margin">default: 0</label>
+        </fieldset>
+
+        <button type="submit">生成する</button>
+      </form>
+
+      <div>
+        <a href="#" id="generated"></a>
+      </div>
+    </section>
+
+    <script>
+      const formElement = document.querySelector("form");
+
+      formElement.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(formElement);
+        const filename = formData.get("filename") ?? "";
+        const effectiveValues = [...formData.entries()].filter(
+          ([k, v]) => v !== "" && k !== "filename"
+        );
+        const queries = effectiveValues.map((kv) => kv.join("=")).join("&");
+        console.log(`${location.origin}/api/v1/${filename}?${queries}`);
+        const link = document.getElementById("generated");
+        const url = `${location.origin}/api/v1/${filename}?${queries}`;
+        link?.setAttribute("href", url);
+        link.textContent = url;
+      });
+    </script>
+  </body>
+</html>
