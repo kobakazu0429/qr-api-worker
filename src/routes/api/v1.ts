@@ -5,10 +5,8 @@ import { imageSync } from "qr-image";
 export const apiV1 = new Hono({ strict: false });
 
 const schema = z.object({
-  type: z.union([z.literal("svg"), z.literal("png")]).default("png"),
-  ec_level: z
-    .union([z.literal("L"), z.literal("M"), z.literal("Q"), z.literal("H")])
-    .default("M"),
+  type: z.enum(["svg", "png"]).default("png"),
+  ec_level: z.enum(["L", "M", "Q", "H"]).default("M"),
   margin: z
     .string()
     .default("0")
