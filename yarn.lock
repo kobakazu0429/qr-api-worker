@@ -480,9 +480,7 @@ glob-parent@~5.1.2:
     is-glob "^4.0.1"
 
 hono@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/hono/-/hono-2.3.1.tgz#aa7c364082a9d9e562855b20b9af859e86418c65"
-  integrity sha512-BEzk6Lkb1cuEoEEo/V0j8jHBIJL+s6B2E5Y5v9WX8AXFaxeaRBdLK0U3isMclAUGs5mDpEK5cmXd23LAbwUZIQ==
+  version "2.7.8"
 
 html-rewriter-wasm@^0.4.1:
   version "0.4.1"
